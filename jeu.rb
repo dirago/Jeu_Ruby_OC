@@ -61,7 +61,7 @@ class Joueur < Personne
     # A faire:
     # - Calculer les dégats
     # - Affiche ce qu'il s'est passé
-    puts "#{@nom} profite de #{@degats_bonus} points de dégats bonus"
+    puts "#{@nom} profite de #{@degats_bonus} points de dégâts bonus"
     sleep 0.6
     rand(20..40) + @degats_bonus + 5
   end
@@ -100,19 +100,19 @@ end
 
 class Jeu
   def self.actions_possibles(monde)
-    puts "ACTIONS POSSIBLES :"
+    puts 'ACTIONS POSSIBLES :'
 
-    puts "0 - Se soigner"
-    puts "1 - Améliorer son attaque"
+    puts '0 - Se soigner'
+    puts '1 - Améliorer son attaque'
 
     # On commence à 2 car 0 et 1 sont réservés pour les actions
     # de soin et d'amélioration d'attaque
     i = 2
     monde.ennemis.each do |ennemi|
       puts "#{i} - Attaquer #{ennemi.info}"
-      i = i + 1
+      i += 1
     end
-    puts "99 - Quitter"
+    puts '99 - Quitter'
   end
 
   def self.est_fini(joueur, monde)
@@ -151,7 +151,10 @@ monde.ennemis = [
 ]
 
 # Initialisation du joueur
-joueur = Joueur.new("Jean-Michel Paladin")
+puts "\nQuel est votre prénom ?"
+
+nom = gets.chomp
+joueur = Joueur.new(nom)
 
 # Message d'introduction. \n signifie "retour à la ligne"
 puts "\n\nAinsi débutent les aventures de #{joueur.nom}\n\n"
