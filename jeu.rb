@@ -118,11 +118,7 @@ class Jeu
   def self.est_fini(joueur, monde)
     # A faire:
     # - Déterminer la condition de fin du jeu
-    if monde.ennemis_en_vie.size == 0 || !joueur.en_vie
-      return true
-    else
-      return false
-    end
+    monde.ennemis_en_vie.size == 0 || !joueur.en_vie ? true : false
   end
 end
 
