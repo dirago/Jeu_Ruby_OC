@@ -117,7 +117,7 @@ class Jeu
     # - Déterminer la condition de fin du jeu
     if monde.ennemis_en_vie.size == 0 || !joueur.en_vie
     	return true
-    else 
+    else
     	return false
     end
   end
@@ -204,7 +204,3 @@ if joueur.en_vie
 else
   puts "Vous avez perdu ! :-("
 end
-
-
-
-
