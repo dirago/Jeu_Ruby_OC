@@ -11,18 +11,18 @@ class Personne
     # A faire:
     # - Renvoie le nom et les points de vie si la personne est en vie
     if @en_vie == true
-    	return "#{@nom}: #{@points_de_vie}/100 pv"
-    # - Renvoie le nom et "vaincu" si la personne a été vaincue
-	else
-		return "#{@nom}: Vaincu"
-	end
+      return "#{@nom}: #{@points_de_vie}/100 pv"
+      # - Renvoie le nom et "vaincu" si la personne a été vaincue
+    else
+      return "#{@nom}: Vaincu"
+    end
   end
 
   def attaque(personne)
     # A faire:
     # - Fait subir des dégats à la personne passée en paramètre
     # - Affiche ce qu'il s'est passé
-    puts "#{@nom} attaque #{personne.nom} !"
+    puts "#{@nom}: attaque #{personne.nom} !"
     personne.subit_attaque(degats)
 
     sleep 0.6
@@ -33,7 +33,7 @@ class Personne
     # - Réduit les points de vie en fonction des dégats reçus
     # - Affiche ce qu'il s'est passé
     # - Détermine si la personne est toujours en_vie ou non
-    puts "@nom subit #{degats_recus} HP de dégats !"
+    puts "#{@nom} subit #{degats_recus} HP de dégats !"
     @points_de_vie -= degats_recus
 
     if @points_de_vie <= 0 && @en_vie
@@ -71,6 +71,9 @@ class Joueur < Personne
     # - Gagner de la vie
     # - Affiche ce qu'il s'est passé
     @points_de_vie += rand(20..40)
+    if @points_de_vie > 100
+      @points_de_vie = 100
+    end
     puts "#{@nom} a gagné de la vie !"
 
     sleep 0.6
@@ -116,9 +119,9 @@ class Jeu
     # A faire:
     # - Déterminer la condition de fin du jeu
     if monde.ennemis_en_vie.size == 0 || !joueur.en_vie
-    	return true
-    else 
-    	return false
+      return true
+    else
+      return false
     end
   end
 end
@@ -130,7 +133,7 @@ class Monde
     # A faire:
     # - Ne retourner que les ennemis en vie
     @ennemis.select do |ennemi|
-    	ennemi.en_vie
+      ennemi.en_vie
     end
   end
 end
@@ -142,9 +145,9 @@ monde = Monde.new
 
 # Ajout des ennemis
 monde.ennemis = [
-  Ennemi.new("Balrog"),
-  Ennemi.new("Goblin"),
-  Ennemi.new("Squelette")
+    Ennemi.new("Balrog"),
+    Ennemi.new("Goblin"),
+    Ennemi.new("Squelette")
 ]
 
 # Initialisation du joueur
@@ -199,10 +202,11 @@ puts "\nGame Over!\n"
 # A faire:
 # - Afficher le résultat de la partie
 
+# Déterminons si le joueur est toujours en vie
 if joueur.en_vie
-  puts "Vous avez gagné ! :-)"
+  puts "Vous avez gagné cher ami!"
 else
-  puts "Vous avez perdu ! :-("
+  puts "Vous avez perdu cher ami!"
 end
 
 
