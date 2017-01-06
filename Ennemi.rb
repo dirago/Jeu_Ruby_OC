@@ -1,3 +1,5 @@
+require_relative 'Personne'
+
 class Ennemi < Personne
   def degats
     # A faire:
